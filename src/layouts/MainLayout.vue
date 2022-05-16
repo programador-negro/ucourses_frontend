@@ -43,7 +43,7 @@ const linksList = [
     title: "Cursos",
     caption: "Todos los cursos de la plataforma",
     icon: "school",
-    link: "/#/login",
+    link: "/#/courses",
   },
   {
     title: "Exámenes",

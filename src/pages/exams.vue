@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div>
+    <section class="section1">
+      <h1>EXÁMENES</h1>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -14,6 +18,6 @@ export default {
   methods: {},
 };
 </script>
-<style>
+<style scoped>
 @import url("../css/exams.css");
 </style>
