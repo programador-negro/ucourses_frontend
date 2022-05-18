@@ -40,6 +40,12 @@ import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
   {
+    title: "Inicio",
+    caption: "",
+    icon: "home",
+    link: "/#/index",
+  },
+  {
     title: "Cursos",
     caption: "Todos los cursos de la plataforma",
     icon: "school",
@@ -51,24 +57,12 @@ const linksList = [
     icon: "code",
     link: "/#/exams",
   },
-  // {
-  //   title: "Discord Chat Channel",
-  //   caption: "chat.quasar.dev",
-  //   icon: "chat",
-  //   link: "https://chat.quasar.dev",
-  // },
   {
     title: "Foro",
     caption: "Comunidad de apoyo",
     icon: "record_voice_over",
     link: "https://forum.quasar.dev",
   },
-  // {
-  //   title: "Facebook",
-  //   caption: "@QuasarFramework",
-  //   icon: "public",
-  //   link: "https://facebook.quasar.dev",
-  // },
   {
     title: "Salir",
     caption: "Cerrar sesión de la plataforma",
@@ -100,7 +94,7 @@ export default defineComponent({
   data() {
     return {
       // username: sessionStorage.getItem("username"),
-      username: "Christopher James",
+      username: sessionStorage.getItem("username"),
     };
   },
 });

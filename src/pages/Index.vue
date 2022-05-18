@@ -1,28 +1,22 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page>
     <section class="section1">
-      <img
-        alt="Quasar logo"
-        src="../assets/rafael.jpg"
-        style="width: 200px; height: 200px"
-      />
+      <div>
+        <h1>Aprende a programar</h1>
+        <p>la mejor plataforma donde aprenden los profesionales</p>
+      </div>
     </section>
     <section class="section2">
-      <div class="grid-container">
-        <div class="grid-item">
-          <h3>Aprende a programar</h3>
-          <p>la mejor plataforma donde aprenden los ingenieros</p>
-        </div>
-        <div
-          v-for="link in courses_link"
-          :key="link.title"
-          v-bind="link"
-          class="grid-item"
-        >
-          <img :src="link.image" alt="imagen" width="100" height="100" />
-          <h4>{{ link.title }}</h4>
-          <p>{{ link.description }}</p>
-        </div>
+      <div
+        class="language-card"
+        v-for="link in courses_link"
+        :key="link.pk"
+        v-bind="link"
+      >
+        <!-- <img :src="require(link.fields.image_url)" alt="logo png" /> -->
+        <h5 class="title">{{ link.fields.title }}</h5>
+        <p>Author: {{ this.user_by_id(link.fields.author) }}</p>
+        <p>Horas: {{ link.fields.duration }}</p>
       </div>
     </section>
   </q-page>
@@ -33,46 +27,80 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "PageIndex",
+  created() {
+    this.courses();
+  },
   data() {
     return {
-      courses_link: [
-        {
-          title: "Python Basico",
-          description: "el mejor curso",
-          image: require("../assets/logo-python.png"),
-        },
-      ],
+      courses_link: [],
     };
+  },
+  methods: {
+    replace_slash(value) {
+      console.log("IMAGE URL: ", value);
+      return import(value.replace("//", "/"));
+    },
+    courses() {
+      this.$axios
+        .get(this.$utils.api_backend + "courses/", {
+          headers: {
+            Authorization: "Token " + sessionStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          console.log("DATA: ", response.data);
+          if (response.data.type == "ok") {
+            // this.$utils.authenticated = true;
+            // sessionStorage.setItem("username", this.username);
+            console.log(response.data.detail);
+            this.courses_link = response.data.detail;
+          } else if (response.data.type == "error") {
+            console.log("data error: ", response.data.detail);
+            this.notification(response.data.detail);
+          } else {
+            this.notification("Algo esta salio mal, contacta al administrador");
+          }
+        })
+        .catch((error) => {
+          console.log("PAGE ERROR: ", error);
+          this.notification(error.message);
+        });
+    },
+    user_by_id(value) {
+      this.$axios
+        .get(this.$utils.api_backend + "user/?pk=" + value.toString(), {
+          headers: {
+            Authorization: "Token " + sessionStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          // console.log("DATA: ", response.data.detail[0]);
+
+          if (response.data.type == "ok") {
+            // console.log("user id: ", response.data.detail[0].fields.username);
+            return response.data.detail[0].fields.username;
+          } else if (response.data.type == "error") {
+            // console.log("data error: ", response.data.detail);
+            this.notification(response.data.detail);
+          } else {
+            this.notification("Algo esta salio mal, contacta al administrador");
+          }
+        })
+        .catch((error) => {
+          console.log("API USER ID ERROR: ", error);
+          this.notification(error.message);
+        });
+    },
+    notification(text) {
+      this.$q.notify({
+        message: text,
+        icon: "announcement",
+        color: "red",
+      });
+    },
   },
 });
 </script>
 <style scoped>
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto;
-  /* background-color: #2196f3; */
-}
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  /* border: 1px solid rgba(0, 0, 0, 0.8); */
-  padding: 10px;
-  font-size: 30px;
-  text-align: center top;
-  display: inline-block;
-}
-.section1 {
-  width: 100vw;
-  background-image: url("../assets/universidad.jpg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  text-align: center;
-}
-.section2 {
-  margin: 5% 6%;
-}
-
-h3 {
-  color: orangered;
-}
+@import url("../css/index.css");
 </style>

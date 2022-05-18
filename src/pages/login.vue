@@ -5,13 +5,13 @@
         <h2 class="text-light-blue-8">Bienvenido</h2>
         <q-input
           standout="bg-orange text-white"
-          v-model="text"
+          v-model="username"
           label="usuario"
         />
         <br />
         <q-input
           standout="bg-orange text-white"
-          v-model="text"
+          v-model="password"
           label="contraseña"
           type="password"
         />
@@ -47,7 +47,7 @@
         </q-btn>
       </div>
       <div class="presentacion">
-        <img src="../assets/logo-ucourses.png" alt="" />
+        <img src="../assets/rafael.png" alt="" />
         <h3>Ucourses</h3>
         <p>Una plataforma de aprendizaje efectivo</p>
       </div>
@@ -70,6 +70,7 @@ export default {
       loading5: false,
       loading6: false,
       progress: false,
+      error_message: "",
     };
   },
   methods: {
@@ -81,10 +82,56 @@ export default {
         // we're done, we reset loading state
         this[`loading${number}`] = false;
       }, 3000);
+      this.login();
+    },
+    login() {
+      console.log("username", this.username);
+      console.log("password", this.password);
+      if (
+        (this.usename !== "" && this.username !== null) ||
+        (this.passsword !== "" && this.passsword !== null)
+      ) {
+        this.$axios
+          .post(this.$utils.api_backend + "authentication/", {
+            username: this.username,
+            password: this.password,
+          })
+          .then((response) => {
+            console.log("DATA: ", response.data);
+            console.log("Token: ", response.data.detail.token);
+            if (response.data.type == "ok") {
+              this.$utils.authenticated = true;
+              sessionStorage.setItem("username", this.username);
+              sessionStorage.setItem("id", response.data.detail.id);
+              sessionStorage.setItem("token", response.data.detail.token);
+
+              this.$router.push("/index");
+            } else if (response.data.type == "error") {
+              console.log("data error: ", response.data.detail);
+              this.notification(response.data.detail);
+            } else {
+              this.notification(
+                "Algo esta salio mal, contacta al administrador"
+              );
+            }
+          })
+          .catch((error) => {
+            console.log("PAGE ERROR: ", error);
+          });
+      } else {
+        console.log("no se enviaron las credenciales de acceso");
+      }
+    },
+    notification(text) {
+      this.$q.notify({
+        message: text,
+        icon: "announcement",
+        color: "red",
+      });
     },
   },
 };
 </script>
-<style>
+<style scoped>
 @import url("../css/login.css");
 </style>

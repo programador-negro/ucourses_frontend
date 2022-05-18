@@ -2,29 +2,20 @@
   <div>
     <section class="section1">
       <h1>CURSOS</h1>
-
-      <div class="grid-container">
-        <div class="grid-item">
-          <q-card class="my-card q-pa-md">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-              <div class="text-h5 absolute-bottom text-right">Title</div>
-            </q-img>
-          </q-card>
-        </div>
-        <div class="grid-item">
-          <q-card class="my-card q-pa-md">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-              <div class="text-h5 absolute-bottom text-right">Title</div>
-            </q-img>
-          </q-card>
-        </div>
-        <div class="grid-item">
-          <q-card class="my-card q-pa-md">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg">
-              <div class="text-h5 absolute-bottom text-right">Title</div>
-            </q-img>
-          </q-card>
-        </div>
+    </section>
+    <section class="section2">
+      <div
+        v-for="link in courses_link"
+        :key="link.pk"
+        v-bind="link"
+        class="language-card"
+      >
+        <span @click="this.$router.push(link.fields.path)">
+          <!-- <img :src="require(link.fields.image_url)" alt="logo png" /> -->
+          <h5 class="title">{{ link.fields.title }}</h5>
+          <p>Author: {{ link.fields.author }}</p>
+          <p>Horas: {{ link.fields.duration }}</p>
+        </span>
       </div>
     </section>
   </div>
@@ -32,14 +23,72 @@
 
 <script>
 export default {
-  name: "",
-
-  created() {},
-
-  data() {
-    return {};
+  name: "courses",
+  created() {
+    this.courses();
   },
-  methods: {},
+  data() {
+    return {
+      courses_link: [],
+    };
+  },
+  methods: {
+    courses() {
+      this.$axios
+        .get(this.$utils.api_backend + "courses/", {
+          headers: {
+            Authorization: "Token " + sessionStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          if (response.data.type == "ok") {
+            console.log(response.data.detail);
+
+            this.courses_link = response.data.detail;
+          } else if (response.data.type == "error") {
+            console.log("data error: ", response.data.detail);
+            this.notification(response.data.detail);
+          } else {
+            this.notification("Algo esta salio mal, contacta al administrador");
+          }
+        })
+        .catch((error) => {
+          console.log("PAGE ERROR: ", error);
+          this.notification(error.message);
+        });
+    },
+    user_by_id(value) {
+      let username = "";
+      this.$axios
+        .get(this.$utils.api_backend + "user/?pk=" + value.toString(), {
+          headers: {
+            Authorization: "Token " + sessionStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          if (response.data.type == "ok") {
+            username = response.data.detail[0].fields.username;
+            console.log("USER ID", username);
+            return username;
+          } else if (response.data.type == "error") {
+            this.notification(response.data.detail);
+          } else {
+            this.notification("Algo esta salio mal, contacta al administrador");
+          }
+        })
+        .catch((error) => {
+          console.log("API USER ID ERROR: ", error);
+          this.notification(error.message);
+        });
+    },
+    notification(text) {
+      this.$q.notify({
+        message: text,
+        icon: "announcement",
+        color: "red",
+      });
+    },
+  },
 };
 </script>
 

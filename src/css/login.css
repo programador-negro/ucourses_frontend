@@ -29,13 +29,14 @@ body {
 .presentacion {
   display: inline-block;
   width: 60%;
+  padding-top: 8%;
   text-align: center;
 }
 
-.presentacion > img {
+/* .presentacion > img {
   width: 50%;
   height: 55%;
-}
+} */
 .presentacion > h3 {
   margin: 0;
   color: white;

@@ -1,0 +1,51 @@
+body {
+  background-color: antiquewhite;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 0;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 1% 5%;
+  font-size: 3em;
+  text-align: center center;
+  display: inline-block;
+}
+.section1 {
+  display: flex;
+  width: 100vw;
+  /* background-image: url("../assets/universidad.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  text-align: center; */
+}
+.section2 {
+  margin: 5% 1%;
+}
+.language-card {
+  display: inline-block;
+  background-color: white;
+  border-radius: 1rem;
+  width: max-content;
+  height: min-content;
+  padding: 1% 5%;
+  text-align: center;
+  margin: 0% 2%;
+}
+.language-card > .title {
+  font-size: 2em;
+  /* width: 100%; */
+}
+
+h1 {
+  color: orangered;
+  margin: 5% 0%;
+}
+p {
+  font-size: 2em;
+}

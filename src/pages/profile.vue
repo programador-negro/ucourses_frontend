@@ -14,6 +14,6 @@ export default {
   methods: {},
 };
 </script>
-<style>
+<style scoped>
 @import url("../css/profile.css");
 </style>

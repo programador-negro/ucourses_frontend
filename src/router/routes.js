@@ -3,6 +3,9 @@ const routes = [
     path: "/index",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/Index.vue") }],
+    meta: {
+      needsAuth: true,
+    },
   },
   {
     path: "/",
@@ -28,6 +31,25 @@ const routes = [
     path: "/exams",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("pages/exams.vue") }],
+  },
+  {
+    path: "/python/:id",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/courses/python.vue") },
+    ],
+  },
+  {
+    path: "/javascript/:id",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [
+      { path: "", component: () => import("pages/courses/javascript.vue") },
+    ],
+  },
+  {
+    path: "/go/:id",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/courses/go.vue") }],
   },
 
   // Always leave this as last one,
