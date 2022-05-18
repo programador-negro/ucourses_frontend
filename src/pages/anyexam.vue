@@ -4,7 +4,7 @@
       <h1>{{ this.exam_title }}</h1>
     </section>
     <section class="section2">
-      <p>User id: {{ this.$route.params.id }}</p>
+      <p>course id: {{ this.$route.params.id }}</p>
     </section>
   </div>
 </template>
@@ -13,11 +13,11 @@
 export default {
   name: "anyexam",
   created() {
-    console.log("ANY EXAM ID: ", this.$route.params.id);
+    console.log("ANY EXAM: COURSE ID: ", this.$route.params.id);
   },
   data() {
     return {
-      courses_link: [],
+      questions_link: [],
       exam_title: "",
     };
   },

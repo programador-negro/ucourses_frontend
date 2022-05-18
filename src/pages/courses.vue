@@ -22,10 +22,8 @@
 <script>
 export default {
   name: "courses",
-  created() {
-    this.courses();
-  },
-  data() {
+  created() {},
+  data: () => {
     return {
       courses_link: [],
     };
@@ -86,6 +84,9 @@ export default {
         color: "red",
       });
     },
+  },
+  mounted() {
+    this.courses();
   },
 };
 </script>

@@ -3,17 +3,6 @@
     <section class="section1">
       <h1>{{ this.course_title }}</h1>
     </section>
-    <!-- <section class="section3">
-      <div
-        class="language-card"
-        v-for="link in topics_link"
-        :key="link.pk"
-        v-bind="link"
-      >
-        <h5 class="title">{{ link.fields.title }}</h5>
-        {{ link.fields.content }}
-      </div>
-    </section> -->
     <section class="section2">
       <q-expansion-item
         class="full-width"
@@ -50,7 +39,7 @@
           </q-card-section>
         </q-card>
       </q-expansion-item>
-      <br />
+
       <q-btn
         color="white"
         text-color="black"
@@ -66,10 +55,9 @@
 <script>
 export default {
   name: "anycourse",
-  created() {
-    this.topics_by_id(this.$route.params.id);
-    this.course_by_id(this.$route.params.id);
-  },
+  // created() {
+
+  // },
   data() {
     return {
       topics_link: [],
@@ -125,6 +113,10 @@ export default {
           this.notification(error.message);
         });
     },
+  },
+  mounted() {
+    this.topics_by_id(this.$route.params.id);
+    this.course_by_id(this.$route.params.id);
   },
 };
 </script>

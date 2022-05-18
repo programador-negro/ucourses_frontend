@@ -3,9 +3,6 @@ const routes = [
     path: "/index",
     component: () => import("layouts/MainLayout.vue"),
     children: [{ path: "", component: () => import("src/pages/index.vue") }],
-    meta: {
-      needsAuth: true,
-    },
   },
   {
     path: "/",
@@ -28,26 +25,40 @@ const routes = [
     path: "/courses",
     name: "courses",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/courses.vue") }],
+    children: [
+      { path: "", component: () => import("pages/courses.vue") },
+      {
+        path: "/anycourse/:id",
+        name: "anycourse",
+        component: () => import("pages/anycourse.vue"),
+      },
+    ],
   },
   {
     path: "/exams",
     name: "exams",
     component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/exams.vue") }],
+    children: [
+      { path: "", component: () => import("pages/exams.vue") },
+      {
+        path: "/anyexam/:id",
+        name: "anyexam",
+        component: () => import("pages/anyexam.vue"),
+      },
+    ],
   },
-  {
-    path: "/anycourse/:id",
-    name: "anycourse",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/anycourse.vue") }],
-  },
-  {
-    path: "/anyexam/:id",
-    name: "anyexam",
-    component: () => import("layouts/MainLayout.vue"),
-    children: [{ path: "", component: () => import("pages/anyexam.vue") }],
-  },
+  // {
+  //   path: "/anycourse/:id",
+  //   name: "anycourse",
+  //   component: () => import("layouts/MainLayout.vue"),
+  //   children: [{ path: "", component: () => import("pages/anycourse.vue") }],
+  // },
+  // {
+  //   path: "/anyexam/:id",
+  //   name: "anyexam",
+  //   component: () => import("layouts/MainLayout.vue"),
+  //   children: [{ path: "", component: () => import("pages/anyexam.vue") }],
+  // },
 
   // Always leave this as last one,
   // but you can also remove it
