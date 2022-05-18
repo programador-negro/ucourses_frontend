@@ -4,19 +4,17 @@
       <h1>CURSOS</h1>
     </section>
     <section class="section2">
-      <div
+      <router-link
+        :to="{ name: 'anycourse', params: { id: link.pk } }"
         v-for="link in courses_link"
         :key="link.pk"
         v-bind="link"
         class="language-card"
       >
-        <span @click="this.$router.push(link.fields.path)">
-          <!-- <img :src="require(link.fields.image_url)" alt="logo png" /> -->
-          <h5 class="title">{{ link.fields.title }}</h5>
-          <p>Author: {{ link.fields.author }}</p>
-          <p>Horas: {{ link.fields.duration }}</p>
-        </span>
-      </div>
+        <h5 class="title">{{ link.fields.title }}</h5>
+        <p>Author: {{ link.fields.author }}</p>
+        <p>Horas: {{ link.fields.duration }}</p>
+      </router-link>
     </section>
   </div>
 </template>

@@ -57,7 +57,7 @@
 
 <script>
 export default {
-  name: "",
+  name: "login",
 
   created() {},
 
@@ -71,6 +71,8 @@ export default {
       loading6: false,
       progress: false,
       error_message: "",
+      username: "",
+      password: "",
     };
   },
   methods: {

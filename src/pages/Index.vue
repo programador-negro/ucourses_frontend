@@ -13,7 +13,6 @@
         :key="link.pk"
         v-bind="link"
       >
-        <!-- <img :src="require(link.fields.image_url)" alt="logo png" /> -->
         <h5 class="title">{{ link.fields.title }}</h5>
         <p>Author: {{ this.user_by_id(link.fields.author) }}</p>
         <p>Horas: {{ link.fields.duration }}</p>
@@ -23,10 +22,7 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "PageIndex",
+export default {
   created() {
     this.courses();
   },
@@ -36,10 +32,6 @@ export default defineComponent({
     };
   },
   methods: {
-    replace_slash(value) {
-      console.log("IMAGE URL: ", value);
-      return import(value.replace("//", "/"));
-    },
     courses() {
       this.$axios
         .get(this.$utils.api_backend + "courses/", {
@@ -99,7 +91,7 @@ export default defineComponent({
       });
     },
   },
-});
+};
 </script>
 <style scoped>
 @import url("../css/index.css");
