@@ -12,7 +12,7 @@
       >
         <template v-slot:header>
           <q-item-section avatar>
-            <q-avatar icon="book" color="primary" text-color="white" />
+            <q-avatar icon="note" color="orange" text-color="white" />
           </q-item-section>
 
           <q-item-section>

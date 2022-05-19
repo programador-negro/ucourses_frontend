@@ -4,7 +4,7 @@
       <h1>{{ this.exam_title }}</h1>
     </section>
     <section class="section2">
-      <p>course id: {{ this.$route.params.id }}</p>
+      <p>exam id: {{ this.$route.params.id }}</p>
     </section>
   </div>
 </template>
@@ -12,9 +12,7 @@
 <script>
 export default {
   name: "anyexam",
-  created() {
-    console.log("ANY EXAM: COURSE ID: ", this.$route.params.id);
-  },
+  created() {},
   data() {
     return {
       questions_link: [],
@@ -22,26 +20,17 @@ export default {
     };
   },
   methods: {
-    async exams_by_id(id, user, course) {
+    async exams_by_id(id) {
       await this.$axios
-        .get(
-          this.$utils.api_backend +
-            "exams/?pk=" +
-            id +
-            "&user=" +
-            user +
-            "&course=" +
-            course,
-          {
-            headers: {
-              Authorization: "Token " + sessionStorage.getItem("token"),
-            },
-          }
-        )
+        .get(this.$utils.api_backend + "questions/?exam_id=" + id, {
+          headers: {
+            Authorization: "Token " + sessionStorage.getItem("token"),
+          },
+        })
         .then((response) => {
           if (response.data.type == "ok") {
             console.log(response.data.detail);
-            this.courses_link = response.data.detail;
+            this.exam_link = response.data.detail;
           } else if (response.data.type == "error") {
             console.log("data error: ", response.data.detail);
             this.notification(response.data.detail);
@@ -54,6 +43,9 @@ export default {
           this.notification(error.message);
         });
     },
+  },
+  mounted() {
+    this.exams_by_id(this.$route.params.id);
   },
 };
 </script>

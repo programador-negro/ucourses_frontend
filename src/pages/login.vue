@@ -48,7 +48,7 @@
       </div>
       <div class="presentacion">
         <img src="../assets/rafael.png" alt="" />
-        <h3>Ucourses</h3>
+        <h3>C.U.R.N.</h3>
         <p>Una plataforma de aprendizaje efectivo</p>
       </div>
     </div>

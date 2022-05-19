@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page class="body-index">
     <section class="section1">
       <div>
         <h1>Aprende a programar</h1>
@@ -14,7 +14,7 @@
         v-bind="link"
       >
         <h5 class="title">{{ link.fields.title }}</h5>
-        <p>Author: {{ this.user_by_id(link.fields.author) }}</p>
+        <!-- <p>Author: {{ this.user_by_id(link.fields.author) }}</p> -->
         <p>Horas: {{ link.fields.duration }}</p>
       </div>
     </section>

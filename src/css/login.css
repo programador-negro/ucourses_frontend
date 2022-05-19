@@ -9,7 +9,7 @@ body {
   margin: 3%;
   padding: 1%;
   display: flex;
-  background-color: rgba(2, 70, 87, 0.555);
+  background-color: rgba(255, 85, 6, 0.678);
   border-radius: 1rem;
 }
 
@@ -38,6 +38,7 @@ body {
   height: 55%;
 } */
 .presentacion > h3 {
+  margin-top: 1%;
   margin: 0;
   color: white;
   font-weight: bolder;
@@ -49,7 +50,7 @@ body {
   font-size: larger;
 }
 hr {
-  color: lightseagreen;
+  color: rgb(255, 81, 0);
 }
 
 p {

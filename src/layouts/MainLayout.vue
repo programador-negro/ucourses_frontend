@@ -63,6 +63,17 @@
             <q-item-label caption> regresar al inicio </q-item-label>
           </q-item-section>
         </q-item>
+
+        <q-item clickable tag="a" @click="this.$router.push('/')">
+          <q-item-section avatar>
+            <q-icon name="logout" />
+          </q-item-section>
+
+          <q-item-section>
+            <q-item-label>Salir</q-item-label>
+            <q-item-label caption> Cerrar Sesión</q-item-label>
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 

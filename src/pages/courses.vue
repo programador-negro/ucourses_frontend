@@ -9,11 +9,9 @@
         v-for="link in courses_link"
         :key="link.pk"
         v-bind="link"
-        class="language-card"
       >
         <h5 class="title">{{ link.fields.title }}</h5>
-        <p>Author: {{ link.fields.author }}</p>
-        <p>Horas: {{ link.fields.duration }}</p>
+        <p>Horas: {{ link.fields.duration }}.0</p>
       </router-link>
     </section>
   </div>
@@ -53,10 +51,10 @@ export default {
           this.notification(error.message);
         });
     },
-    user_by_id(value) {
+    user_by_id(id) {
       let username = "";
       this.$axios
-        .get(this.$utils.api_backend + "user/?pk=" + value.toString(), {
+        .get(this.$utils.api_backend + "user/?pk=" + id, {
           headers: {
             Authorization: "Token " + sessionStorage.getItem("token"),
           },
