@@ -1,8 +1,9 @@
-body {
+.body-login {
   background-image: url("../assets/universidad.jpg");
   background-position: top right;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 .container {

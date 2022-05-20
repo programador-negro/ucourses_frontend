@@ -1,7 +1,39 @@
-h3 {
+.body-exams {
+  background-color: antiquewhite;
+  height: 100vh;
+}
+h1 {
   color: orangered;
 }
 
 .title {
   color: orangered;
+}
+
+.section1 {
+  width: auto;
+  margin: 0px;
+  padding: 0% 5%;
+  text-align: center;
+}
+.exam-box {
+  background-color: white;
+  width: 30%;
+  display: inline-block;
+  margin: 0% 1%;
+  text-align: center;
+  border-radius: 1em;
+}
+
+.r-link {
+  width: 30%;
+  color: black;
+}
+.r-link > h5 {
+  color: orangered;
+  font-weight: bold;
+  margin: 4% 0%;
+}
+.r-link > p {
+  color: black;
 }

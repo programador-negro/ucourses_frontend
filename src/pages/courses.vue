@@ -1,18 +1,25 @@
 <template>
-  <div>
+  <div class="body-courses">
     <section class="section1">
       <h1>CURSOS</h1>
     </section>
     <section class="section2">
-      <router-link
-        :to="{ name: 'anycourse', params: { id: link.pk } }"
+      <div
+        class="course-box"
         v-for="link in courses_link"
         :key="link.pk"
         v-bind="link"
       >
-        <h5 class="title">{{ link.fields.title }}</h5>
-        <p>Horas: {{ link.fields.duration }}.0</p>
-      </router-link>
+        <router-link
+          :to="{ name: 'anycourse', params: { id: link.pk } }"
+          style="text-decoration: none"
+          class="r-link"
+        >
+          <img class="logo-python" src="../assets/logo-python.png" alt="" />
+          <h5 class="title">{{ link.fields.title }}</h5>
+          <p>Horas: {{ link.fields.duration }}.0</p>
+        </router-link>
+      </div>
     </section>
   </div>
 </template>
@@ -90,5 +97,62 @@ export default {
 </script>
 
 <style scoped>
-@import url("../css/courses.css");
+/* @import url("../css/courses.css"); */
+.body-courses {
+  height: 100vh;
+}
+
+h1 {
+  color: orangered;
+  font-weight: bold;
+  text-align: left;
+}
+
+.language-card {
+  display: inline-block;
+  background-color: rgb(235, 235, 235);
+  border-radius: 1rem;
+  width: max-content;
+  height: min-content;
+  padding: 1% 5%;
+  text-align: center;
+  margin: 0% 2%;
+}
+.language-card > .title {
+  font-size: 2em;
+  /* width: 100%; */
+}
+
+/* .section2 {
+  display: flex;
+} */
+
+.section1 {
+  padding: 0% 5%;
+  text-align: left;
+}
+.course-box {
+  background-color: rgb(235, 235, 235);
+  width: 30%;
+  display: inline-block;
+  margin: 0% 1%;
+  text-align: center;
+  border-radius: 1em;
+}
+
+.r-link {
+  width: 30%;
+}
+.r-link > h5 {
+  color: orangered;
+  font-weight: bold;
+  margin: 4% 0%;
+}
+.r-link > p {
+  color: black;
+}
+.logo-python {
+  width: 50%;
+  height: 50%;
+}
 </style>

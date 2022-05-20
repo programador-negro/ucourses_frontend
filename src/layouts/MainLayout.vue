@@ -11,7 +11,7 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title> University Courses </q-toolbar-title>
+        <q-toolbar-title> Cursos Universitarios </q-toolbar-title>
 
         <div>Hola {{ this.username }}</div>
       </q-toolbar>
@@ -38,7 +38,7 @@
 
           <q-item-section>
             <q-item-label>Cursos</q-item-label>
-            <q-item-label caption> regresar al inicio </q-item-label>
+            <q-item-label caption> Ver todos los cursos </q-item-label>
           </q-item-section>
         </q-item>
 
@@ -48,8 +48,8 @@
           </q-item-section>
 
           <q-item-section>
-            <q-item-label>Examenes</q-item-label>
-            <q-item-label caption> regresar al inicio </q-item-label>
+            <q-item-label>Exámenes</q-item-label>
+            <q-item-label caption> Ver exámenes </q-item-label>
           </q-item-section>
         </q-item>
 
@@ -60,7 +60,7 @@
 
           <q-item-section>
             <q-item-label>Perfil</q-item-label>
-            <q-item-label caption> regresar al inicio </q-item-label>
+            <q-item-label caption> mis calificaciones </q-item-label>
           </q-item-section>
         </q-item>
 
@@ -84,41 +84,6 @@
 </template>
 
 <script>
-import EssentialLink from "components/EssentialLink.vue";
-
-// const linksList = [
-//   {
-//     title: "Inicio",
-//     caption: "",
-//     icon: "home",
-//     link: "/#/index",
-//   },
-//   {
-//     title: "Cursos",
-//     caption: "Todos los cursos de la plataforma",
-//     icon: "school",
-//     link: "/#/courses",
-//   },
-//   {
-//     title: "Exámenes",
-//     caption: "Comprueba tu conocimiento",
-//     icon: "code",
-//     link: "/#/exams",
-//   },
-//   {
-//     title: "Foro",
-//     caption: "Comunidad de apoyo",
-//     icon: "record_voice_over",
-//     link: "https://forum.quasar.dev",
-//   },
-//   {
-//     title: "Salir",
-//     caption: "Cerrar sesión de la plataforma",
-//     icon: "favorite",
-//     link: "",
-//   },
-// ];
-
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
@@ -128,20 +93,18 @@ export default defineComponent({
   //   EssentialLink,
   // },
 
-  // setup() {
-  //   const leftDrawerOpen = ref(false);
+  setup() {
+    const leftDrawerOpen = ref(false);
 
-  //   return {
-  //     essentialLinks: linksList,
-  //     leftDrawerOpen,
-  //     toggleLeftDrawer() {
-  //       leftDrawerOpen.value = !leftDrawerOpen.value;
-  //     },
-  //   };
-  // },
+    return {
+      leftDrawerOpen,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
   data() {
     return {
-      // username: sessionStorage.getItem("username"),
       username: sessionStorage.getItem("username"),
     };
   },

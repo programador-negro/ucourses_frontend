@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body-login">
     <div class="container">
       <div class="autenticacion">
         <h2 class="text-light-blue-8">Bienvenido</h2>

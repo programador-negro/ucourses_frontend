@@ -41,24 +41,22 @@ const routes = [
     children: [
       { path: "", component: () => import("pages/exams.vue") },
       {
-        path: "/anyexam/:id",
-        name: "anyexam",
-        component: () => import("pages/anyexam.vue"),
+        path: "/basico",
+        name: "basico",
+        component: () => import("pages/exams/exam-python-basico.vue"),
+      },
+      {
+        path: "/intermedio",
+        name: "intermedio",
+        component: () => import("pages/exams/exam-python-intermedio.vue"),
+      },
+      {
+        path: "/avanzado",
+        name: "avanzado",
+        component: () => import("pages/exams/exam-python-avanzado.vue"),
       },
     ],
   },
-  // {
-  //   path: "/anycourse/:id",
-  //   name: "anycourse",
-  //   component: () => import("layouts/MainLayout.vue"),
-  //   children: [{ path: "", component: () => import("pages/anycourse.vue") }],
-  // },
-  // {
-  //   path: "/anyexam/:id",
-  //   name: "anyexam",
-  //   component: () => import("layouts/MainLayout.vue"),
-  //   children: [{ path: "", component: () => import("pages/anyexam.vue") }],
-  // },
 
   // Always leave this as last one,
   // but you can also remove it

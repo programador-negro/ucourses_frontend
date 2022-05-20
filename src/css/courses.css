@@ -1,5 +1,6 @@
-body {
+.body-courses {
   background-color: antiquewhite;
+  height: 100vh;
 }
 
 h1 {
@@ -27,4 +28,24 @@ h1 {
 
 .section1 {
   padding: 0% 5%;
+}
+.course-box {
+  background-color: white;
+  width: 30%;
+  display: inline-block;
+  margin: 0% 1%;
+  text-align: center;
+  border-radius: 1em;
+}
+
+.r-link {
+  width: 30%;
+}
+.r-link > h5 {
+  color: orangered;
+  font-weight: bold;
+  margin: 4% 0%;
+}
+.r-link > p {
+  color: black;
 }

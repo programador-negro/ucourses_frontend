@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body-anycourse">
     <section class="section1">
       <h1>{{ this.course_title }}</h1>
     </section>
@@ -41,8 +41,9 @@
       </q-expansion-item>
 
       <q-btn
-        color="white"
-        text-color="black"
+        style="margin-top: 5%; margin-left: 40%"
+        color="green"
+        text-color="white"
         @click="
           this.$router.push({ name: 'anyexam', params: { id: this.course_id } })
         "
@@ -122,5 +123,16 @@ export default {
 </script>
 
 <style scoped>
-@import url("../css/anycourse.css");
+h1 {
+  color: orangered;
+  margin: 5% 0%;
+  font-weight: bold;
+}
+.body-anycourse {
+  height: 100vh;
+}
+.section1 {
+  padding: 0% 5%;
+  text-align: left;
+}
 </style>

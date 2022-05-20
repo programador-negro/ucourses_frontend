@@ -1,5 +1,5 @@
 <template>
-  <q-page class="body-index">
+  <div class="body-index">
     <section class="section1">
       <div>
         <h1>Aprende a programar</h1>
@@ -13,12 +13,18 @@
         :key="link.pk"
         v-bind="link"
       >
-        <h5 class="title">{{ link.fields.title }}</h5>
-        <!-- <p>Author: {{ this.user_by_id(link.fields.author) }}</p> -->
-        <p>Horas: {{ link.fields.duration }}</p>
+        <router-link
+          :to="{ name: 'anycourse', params: { id: link.pk } }"
+          style="text-decoration: none"
+          class="r-link"
+        >
+          <img class="logo-python" src="../assets/logo-python.png" alt="" />
+          <h5 class="title">{{ link.fields.title }}</h5>
+          <span>Duración: {{ link.fields.duration }}.0 Horas</span>
+        </router-link>
       </div>
     </section>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -94,5 +100,65 @@ export default {
 };
 </script>
 <style scoped>
-@import url("../css/index.css");
+/* @import url("../css/index.css"); */
+.body-index {
+  height: 100vh;
+}
+
+.title {
+  color: orangered;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 0;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 1% 5%;
+  font-size: 3em;
+  text-align: center center;
+  display: inline-block;
+}
+.section1 {
+  display: flex;
+  width: 100vw;
+  margin: 0px;
+  padding: 0% 5%;
+  text-align: left;
+}
+.section2 {
+  margin: 1% 1%;
+  text-align: center;
+}
+.language-card {
+  display: inline-block;
+  background-color: white;
+  border-radius: 1rem;
+  width: 280px;
+  height: auto;
+  padding: 2% 0%;
+  text-align: center;
+  margin: 3% 2%;
+}
+.language-card > .title {
+  font-size: 2em;
+  /* width: 100%; */
+}
+
+h1 {
+  color: orangered;
+  margin: 5% 0%;
+  font-weight: bold;
+}
+p {
+  font-size: 2em;
+}
+
+.logo-python {
+  width: 50%;
+  height: 50%;
+}
 </style>

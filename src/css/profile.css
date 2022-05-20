@@ -1,0 +1,42 @@
+.body-profile {
+  background-color: antiquewhite;
+
+  height: 100vh;
+}
+
+table {
+  width: 100%;
+  border: 1px solid orangered;
+  font-size: 2em;
+  background-color: white;
+  text-align: left;
+  padding: 0% 0.5%;
+}
+
+th,
+td {
+  /* border-radius: 2em; */
+  border-bottom: 1px solid orangered;
+  padding: 0%;
+}
+th {
+  color: white;
+}
+.section1 {
+  width: auto;
+  margin: 0px;
+  padding: 0% 5%;
+  text-align: center;
+}
+.section2 {
+  width: auto;
+  padding: 5% 0%;
+  text-align: center;
+}
+.image-profile {
+  margin: 0%;
+}
+.t-header {
+  background-color: orangered;
+  padding-left: 2%;
+}
