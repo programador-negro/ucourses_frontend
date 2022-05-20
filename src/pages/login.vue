@@ -28,7 +28,7 @@
             Cargando...
           </template>
         </q-btn>
-        <br />
+        <!-- <br />
         <br />
         <hr />
         <br />
@@ -44,7 +44,7 @@
             <q-spinner-hourglass class="on-left" />
             Cargando...
           </template>
-        </q-btn>
+        </q-btn> -->
       </div>
       <div class="presentacion">
         <img src="../assets/rafael.png" alt="" />
